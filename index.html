@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+    <title>Đại hội Đoàn TNCS Hồ Chí Minh xã Thất Khê · 2025–2030</title>
+    <style>
+      /* ========== MOBILE-FIRST THEME TOKENS ========== */
+      :root {
+        /* colors (light) */
+        --bg: #eef4ff;
+        --text: #1e2430;
+        --primary: #0a4ea6;
+        --primary-2: #0a3570;
+        --accent: #ffd84a;
+        --link: #0b82ff;
+        --card: #ffffff;
+        --card-border: #0a4ea6;
+        --muted: #f7f9ff;
+        --footer: #0a3570;
+        --ring: rgba(11, 130, 255, 0.25);
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+      }
+
+      /* tôn trọng chế độ tối của hệ thống */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0c1422;
+          --text: #dfe7ff;
+          --primary: #0e59b6;
+          --primary-2: #0a3570;
+          --accent: #ffd84a;
+          --link: #7ebbff;
+          --card: #101a2a;
+          --card-border: #1976d2;
+          --muted: #0e1728;
+          --footer: #0a3570;
+          --ring: rgba(126, 188, 255, 0.3);
+          --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      /* khi bật checkbox -> ép dark (CSS thuần, không JS) */
+      #themeToggle {
+        position: fixed;
+        inset: -9999px auto auto -9999px;
+      }
+      #themeToggle:checked ~ .site {
+        --bg: #0c1422;
+        --text: #dfe7ff;
+        --primary: #0e59b6;
+        --primary-2: #0a3570;
+        --accent: #ffd84a;
+        --link: #7ebbff;
+        --card: #101a2a;
+        --card-border: #1976d2;
+        --muted: #0e1728;
+        --footer: #0a3570;
+        --ring: rgba(126, 188, 255, 0.3);
+        --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      }
+
+      /* ========== BASE ========== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 12px;
+      }
+
+      /* ========== HEADER ========== */
+      header {
+        background: linear-gradient(
+          180deg,
+          var(--primary) 0%,
+          var(--primary-2) 100%
+        );
+        color: #fff;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+      }
+      .logo {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        background: url('./image/logo-doan-thanh-nien.png') center/contain
+          no-repeat;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+      }
+      .titles {
+        flex: 1;
+        text-align: center;
+        padding-right: 56px;
+      } /* chừa chỗ cho nút */
+      .titles h1 {
+        font-size: clamp(14px, 4.2vw, 16px);
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+      }
+      .titles h2 {
+        margin-top: 4px;
+        font-weight: 700;
+        color: var(--accent);
+        font-size: clamp(12px, 3.6vw, 18px);
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Nút sáng/tối – tròn 44px góc phải thanh tiêu đề */
+      .theme-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        transition: transform 0.15s ease, background 0.2s ease;
+      }
+      .theme-btn:hover {
+        transform: scale(1.04);
+      }
+      .theme-btn:active {
+        transform: scale(0.98);
+      }
+      /* icon bằng pseudo – đổi theo trạng thái checkbox */
+      .theme-btn::before {
+        content: '🌙';
+        font-size: 20px;
+        line-height: 1;
+      }
+      #themeToggle:checked + label.theme-btn::before {
+        content: '☀️';
+      }
+
+      /* ========== BANNER dưới header ========== */
+      .hero {
+        background: var(--muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .hero .container {
+        padding: 10px 12px 16px;
+      }
+      .hero img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 42vh;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
+
+        header{
+          position: sticky;    
+          top: 0;
+          z-index: 1000;     
+          box-shadow: 0 2px 10px rgba(0,0,0,.12);
+        }
+
+        .topbar{
+          padding-top: calc(10px + env(safe-area-inset-top));
+        }
+
+      /* ========== MAIN (card tài liệu) ========== */
+      main {
+        padding: 16px 0 24px;
+      }
+      .card {
+        background: var(--card);
+        border-top: 5px solid var(--card-border);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 18px 14px;
+        margin: 0 12px;
+      }
+      .card h3 {
+        text-align: center;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-size: clamp(16px, 4.6vw, 22px);
+        margin-bottom: 10px;
+      }
+      .docs {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .docs a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(90deg, #2863a1, #2198d8);
+        color: #fff;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .docs a:active {
+        transform: translateY(1px);
+      }
+      .docs a span {
+        font-size: 16px;
+      }
+      .docs a .emoji {
+        font-size: 18px;
+      }
+      /* tăng vùng bấm trên mobile */
+      .docs a {
+        min-height: 44px;
+      }
+
+      /* focus ring cho accessibility */
+      a:focus-visible,
+      .theme-btn:focus-visible {
+        outline: 2px solid transparent;
+        box-shadow: 0 0 0 4px var(--ring);
+        border-radius: 10px;
+      }
+
+      /* ========== FOOTER ========== */
+      footer {
+        background: var(--footer);
+        color: #fff;
+        text-align: center;
+        padding: 12px;
+        font-size: 13px;
+        letter-spacing: 0.2px;
+      }
+
+      /* ========== DESKTOP TINH CHỈNH ========== */
+      @media (min-width: 768px) {
+        .logo {
+          width: 56px;
+          height: 56px;
+        }
+        .titles {
+          padding-right: 64px;
+        }
+        .hero .container {
+          padding: 12px 16px 22px;
+        }
+        .card {
+          width: min(720px, 92%);
+          margin: 0 auto;
+          padding: 26px 22px;
+        }
+        .docs {
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+
+    <div class="site">
+      <header>
+        <div class="container topbar">
+          <div
+            class="logo"
+            aria-label="Logo Đoàn TNCS HCM"></div>
+          <div class="titles">
+            <h1>ĐẠI HỘI ĐẠI BIỂU ĐOÀN THANH NIÊN XÃ THẤT KHÊ</h1>
+            <h2>LẦN THỨ I, NHIỆM KỲ 2025 – 2030</h2>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banner ngay dưới header -->
+      <section class="hero">
+        <div class="container">
+          <img
+            src="./image/banner.png"
+            alt="Banner Đại hội Đoàn TNCS Hồ Chí Minh"
+            loading="lazy" />
+        </div>
+      </section>
+
+      <main>
+        <section
+          class="card"
+          aria-labelledby="docs-title">
+          <h3 id="docs-title">Danh sách tài liệu</h3>
+          <ul class="docs">
+            <li>
+              <a href="https://docs.google.com/document/d/1bj4UrwaKo0YHEAqEXQBNAyp_SX1sV1au/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">📘</span
+                ><span>Chương trình Đại hội</span></a
+              >
+            </li>
+            <li>
+              <a href="https://docs.google.com/document/d/1o9fkfX335Fz0K2-wegpgiSOmx2WpYfIe/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">📋</span
+                ><span>Nội quy Đại hội</span></a
+              >
+            </li>
+            <li>
+              <a href="https://docs.google.com/document/d/1V6WAf5BsN0lSPhnwI5tj4dTJpwwwmbLN/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">📜</span
+                ><span>Quy chế Đại hội</span></a
+              >
+            </li>
+            <li>
+              <a href="https://docs.google.com/document/d/1zfB6HT2zI9BnRysG8-_YWz-V1JcFiR5u/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">🏛️</span
+                ><span>BÁO CÁO CHÍNH TRỊ ĐẠI HỘI</span></a
+              >
+            </li>
+            <li>
+              <a href="https://docs.google.com/document/d/1at94lXT76oUQIYVhLNkDZTM_EcHRrhsk/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">📑</span
+                ><span>BÁO CÁO KIỂM ĐIỂM BAN CHẤP HÀNH</span></a
+              >
+            </li>
+            <li>
+              <a href="https://docs.google.com/document/d/121dbBUgTraft4Y1b4qXWYhpEJOFrwrLr/edit?usp=sharing&ouid=113728666509200437379&rtpof=true&sd=true"
+                ><span class="emoji">🗳️</span
+                ><span>NGHỊ QUYẾT ĐẠI HỘI</span></a
+              >
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>© Đoàn Thanh Niên Xã Thất Khê - 2025</footer>
+    </div>
+  </body>
+</html>
